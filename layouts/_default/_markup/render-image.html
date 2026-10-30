@@ -1,0 +1,9 @@
+{{- $hash := printf "img-%s" (md5 .Destination) -}}
+<a href="#{{ $hash }}" class="md-zoom-trigger">
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}>
+</a>
+<div id="{{ $hash }}" class="md-zoom-overlay">
+  <a href="#close" class="md-zoom-close" aria-label="关闭">×</a>
+  <a href="#close" class="md-zoom-backdrop"></a>
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}">
+</div>
